@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* custom variables */
+:root {
+    /* ### Primary */
+    --cl-Orange: hsl(26, 100%, 55%);
+    --cl-Pale-orange: hsl(25, 100%, 94%);
+    /* ### Neutral */
+    --cl-Very-dark-blue: hsl(220, 13%, 13%);
+    --cl-Dark-grayish-blue: hsl(219, 9%, 45%);
+    --cl-Grayish-blue: hsl(220, 14%, 75%);
+    --cl-Light-grayish-blue: hsl(223, 64%, 98%);
+    --cl-White: hsl(0, 0%, 100%);
+
+    /* with 75% opacity for lightbox background */
+    --cl-Black: hsl(0, 0%, 0%);
+}
+
+/* global css */
+body {
+    font-family: 'Rubik', sans-serif;
+    font-size: 16px;
+    scroll-behavior: smooth;
+}
