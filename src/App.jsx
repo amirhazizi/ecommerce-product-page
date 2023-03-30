@@ -1,7 +1,11 @@
 import { useState } from "react"
-
+import Navbar from "./Navbar"
 function App() {
-  return <p>test</p>
+  return (
+    <>
+      <Navbar />
+    </>
+  )
 }
 
 export default App
