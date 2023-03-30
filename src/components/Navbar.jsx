@@ -1,6 +1,6 @@
-import { CardIcon, MenuIcon } from "./components/Icons"
-import logo from "./assets/images/logo.svg"
-import userImage from "./assets/images/image-avatar.png"
+import { CardIcon, MenuIcon } from "./Icons"
+import logo from "../assets/images/logo.svg"
+import userImage from "../assets/images/image-avatar.png"
 const Navbar = () => {
   return (
     <nav>
