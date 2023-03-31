@@ -2,7 +2,7 @@ import defaultImage from "../assets/images/image-product-1.jpg"
 import { NextIcon, PreviousIcon, MinusIcon, PlusIcon, CardIcon } from "./Icons"
 const Hero = () => {
   return (
-    <header className='-mt-2 mb-10'>
+    <header className='-mt-5 mb-10'>
       <div className='relative'>
         <img src={defaultImage} alt='' />
         <button className='slide-btn absolute top-1/2 right-0 -translate-x-4 bg-white rounded-full'>
