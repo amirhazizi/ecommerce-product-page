@@ -5,7 +5,7 @@ import { useGlobalContext } from "../Context"
 const Navbar = () => {
   const { setShowSidebar } = useGlobalContext()
   return (
-    <nav>
+    <nav className='z-10 relative bg-clWhite'>
       <div className='p-4 px-6 flex justify-between items-center'>
         <div className='flex items-center space-x-4'>
           <button onClick={() => setShowSidebar(true)}>

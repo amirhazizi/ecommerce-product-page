@@ -24,3 +24,12 @@ body {
     font-size: 16px;
     scroll-behavior: smooth;
 }
+
+/* header */
+.slide-btn {
+    padding: .8rem .95rem;
+}
+
+.addToCard-btn {
+    box-shadow: 0 1rem 3rem hsla(26, 100%, 55%, 0.363);
+}

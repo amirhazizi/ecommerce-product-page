@@ -37,7 +37,7 @@ export const DeleteIcon = () => {
       width='14'
       height='16'
       xmlns='http://www.w3.org/2000/svg'
-      xmlns:xlink='http://www.w3.org/1999/xlink'
+      xmlnsXlink='http://www.w3.org/1999/xlink'
     >
       <defs>
         <path
@@ -45,7 +45,7 @@ export const DeleteIcon = () => {
           id='a'
         />
       </defs>
-      <use fill='#C3CAD9' fillRule='nonzero' xlink:href='#a' />
+      <use fill='#C3CAD9' fillRule='nonzero' xlinkHref='#a' />
     </svg>
   )
 }
@@ -55,7 +55,7 @@ export const MinusIcon = () => {
       width='12'
       height='4'
       xmlns='http://www.w3.org/2000/svg'
-      xmlns:xlink='http://www.w3.org/1999/xlink'
+      xmlnsXlink='http://www.w3.org/1999/xlink'
     >
       <defs>
         <path
@@ -63,17 +63,22 @@ export const MinusIcon = () => {
           id='a'
         />
       </defs>
-      <use fill='#FF7E1B' fillRule='nonzero' xlink:href='#a' />
+      <use fill='#FF7E1B' fillRule='nonzero' xlinkHref='#a' />
     </svg>
   )
 }
 export const NextIcon = () => {
   return (
-    <svg width='13' height='18' xmlns='http://www.w3.org/2000/svg'>
+    <svg
+      className='ml-px scale-90'
+      width='13'
+      height='18'
+      xmlns='http://www.w3.org/2000/svg'
+    >
       <path
         d='m2 1 8 8-8 8'
         stroke='#1D2026'
-        stroke-width='3'
+        strokeWidth='3'
         fill='none'
         fillRule='evenodd'
       />
@@ -86,7 +91,7 @@ export const PlusIcon = () => {
       width='12'
       height='12'
       xmlns='http://www.w3.org/2000/svg'
-      xmlns:xlink='http://www.w3.org/1999/xlink'
+      xmlnsXlink='http://www.w3.org/1999/xlink'
     >
       <defs>
         <path
@@ -94,17 +99,22 @@ export const PlusIcon = () => {
           id='b'
         />
       </defs>
-      <use fill='#FF7E1B' fillRule='nonzero' xlink:href='#b' />
+      <use fill='#FF7E1B' fillRule='nonzero' xlinkHref='#b' />
     </svg>
   )
 }
 export const PreviousIcon = () => {
   return (
-    <svg width='12' height='18' xmlns='http://www.w3.org/2000/svg'>
+    <svg
+      className='scale-90 mr-px'
+      width='12'
+      height='18'
+      xmlns='http://www.w3.org/2000/svg'
+    >
       <path
         d='M11 1 3 9l8 8'
         stroke='#1D2026'
-        stroke-width='3'
+        strokeWidth='3'
         fill='none'
         fillRule='evenodd'
       />
