@@ -1,6 +1,15 @@
 import defaultImage from "../assets/images/image-product-1.jpg"
 import { NextIcon, PreviousIcon, MinusIcon, PlusIcon, CardIcon } from "./Icons"
+import { useGlobalContext } from "../Context"
 const Hero = () => {
+  const {
+    product: { company, title, content, price, offPrice, OffPercent },
+    productImages,
+    index,
+    setIndex,
+    order,
+    setOrder,
+  } = useGlobalContext()
   return (
     <header className='-mt-5 mb-10'>
       <div className='relative'>
@@ -13,22 +22,18 @@ const Hero = () => {
         </button>
       </div>
       <div className='p-5 space-y-3  font-bold'>
-        <p className='uppercase text-clOrange text-sm'>Sneaker Company</p>
-        <h1 className='text-clVerydarkblue text-3xl'>
-          Fall Limited Edition Sneakers
-        </h1>
-        <p className='text-clDarkgrayishblue text-sm opacity-75'>
-          These low-profile sneakers are your perfect casual wear companion.
-          Featuring a durable rubber outer sole, they’ll withstand everything
-          the weather can offer.
-        </p>
+        <p className='uppercase text-clOrange text-sm'>{company}</p>
+        <h1 className='text-clVerydarkblue text-3xl'>{title}</h1>
+        <p className='text-clDarkgrayishblue text-sm opacity-75'>{content}</p>
         <div className='flex items-center w-full py-3'>
           <div className='flex items-center gap-x-4'>
-            <h1 className='text-3xl'>$125.00</h1>
-            <h2 className='text-clOrange bg-orange-100 px-2 rounded-md'>50%</h2>
+            <h1 className='text-3xl'>${offPrice}.00</h1>
+            <h2 className='text-clOrange bg-orange-100 px-2 rounded-md'>
+              {OffPercent}%
+            </h2>
           </div>
           <h3 className=' ml-auto line-through text-clDarkgrayishblue opacity-50'>
-            $250.00
+            ${price}.00
           </h3>
         </div>
         <div className='space-y-4'>
@@ -36,7 +41,7 @@ const Hero = () => {
             <button className='fill-clOrange'>
               <MinusIcon />
             </button>
-            <p>0</p>
+            <p>{order}</p>
             <button>
               <PlusIcon />
             </button>
