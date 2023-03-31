@@ -548,8 +548,8 @@ video {
   z-index: 20;
 }
 
-.-mt-2 {
-  margin-top: -0.5rem;
+.-mt-5 {
+  margin-top: -1.25rem;
 }
 
 .mb-10 {
@@ -566,10 +566,6 @@ video {
 
 .mr-px {
   margin-right: 1px;
-}
-
-.-mt-5 {
-  margin-top: -1.25rem;
 }
 
 .flex {
@@ -597,8 +593,18 @@ video {
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
+.-translate-x-full {
+  --tw-translate-x: -100%;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
 .translate-x-4 {
   --tw-translate-x: 1rem;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.translate-x-full {
+  --tw-translate-x: 100%;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
@@ -714,10 +720,6 @@ video {
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
 
-.bg-opacity-75 {
-  --tw-bg-opacity: 0.75;
-}
-
 .bg-opacity-60 {
   --tw-bg-opacity: 0.6;
 }
@@ -818,6 +820,12 @@ video {
   opacity: 0.75;
 }
 
+.transition-transform {
+  transition-property: transform;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
 /* custom variables */
 
 :root {
@@ -850,6 +858,11 @@ body {
 
 .addToCard-btn {
   box-shadow: 0 1rem 3rem hsla(26, 100%, 55%, 0.363);
+}
+
+.slider-container {
+  height: 375px;
+  /* overflow: hidden; */
 }
 
 /* sidebar */

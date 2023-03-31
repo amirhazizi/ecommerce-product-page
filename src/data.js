@@ -11,20 +11,20 @@ const products = [
     OffPercent: 50,
     images: [
       {
-        jpg: "../assets/images/image-product-1.jpg",
-        thumbnail: "../assets/images/image-product-1-thumbnail.jpg",
+        jpg: "../src/assets/images/image-product-1.jpg",
+        thumbnail: "../src/assets/images/image-product-1-thumbnail.jpg",
       },
       {
-        jpg: "../assets/images/image-product-2.jpg",
-        thumbnail: "../assets/images/image-product-2-thumbnail.jpg",
+        jpg: "../src/assets/images/image-product-2.jpg",
+        thumbnail: "../src/assets/images/image-product-2-thumbnail.jpg",
       },
       {
-        jpg: "../assets/images/image-product-3.jpg",
-        thumbnail: "../assets/images/image-product-3-thumbnail.jpg",
+        jpg: "../src/assets/images/image-product-3.jpg",
+        thumbnail: "../src/assets/images/image-product-3-thumbnail.jpg",
       },
       {
-        jpg: "../assets/images/image-product-4.jpg",
-        thumbnail: "../assets/images/image-product-4-thumbnail.jpg",
+        jpg: "../src/assets/images/image-product-4.jpg",
+        thumbnail: "../src/assets/images/image-product-4-thumbnail.jpg",
       },
     ],
   },

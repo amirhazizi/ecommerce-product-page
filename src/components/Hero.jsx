@@ -1,23 +1,46 @@
-import defaultImage from "../assets/images/image-product-1.jpg"
 import { NextIcon, PreviousIcon, MinusIcon, PlusIcon, CardIcon } from "./Icons"
 import { useGlobalContext } from "../Context"
 const Hero = () => {
   const {
     product: { company, title, content, price, offPrice, OffPercent },
     productImages,
-    index,
-    setIndex,
+    sliderIndex,
+    setSliderIndex,
     order,
     setOrder,
+    addSliderIndex,
+    minusSliderIndex,
   } = useGlobalContext()
   return (
     <header className='-mt-5 mb-10'>
-      <div className='relative'>
-        <img src={defaultImage} alt='' />
-        <button className='slide-btn absolute top-1/2 right-0 -translate-x-4 bg-white rounded-full'>
+      <div className='slider-container relative'>
+        {productImages.map((productimage, index) => {
+          let position = "translate-x-full"
+          if (index === sliderIndex) position = ""
+          if (
+            index === sliderIndex - 1 ||
+            (sliderIndex === 0 && index === productImages.length - 1)
+          )
+            position = "-translate-x-full"
+          return (
+            <img
+              className={`absolute top-0 left-0 transition-transform ${position}`}
+              key={index}
+              src={productimage.jpg}
+              alt={`${title}-image-${index + 1}`}
+            />
+          )
+        })}
+        <button
+          onClick={() => addSliderIndex()}
+          className='slide-btn absolute top-1/2 right-0 -translate-x-4 bg-white rounded-full'
+        >
           <NextIcon />
         </button>
-        <button className='slide-btn absolute top-1/2 left-0 translate-x-4 bg-white rounded-full'>
+        <button
+          onClick={() => minusSliderIndex()}
+          className='slide-btn absolute top-1/2 left-0 translate-x-4 bg-white rounded-full'
+        >
           <PreviousIcon />
         </button>
       </div>

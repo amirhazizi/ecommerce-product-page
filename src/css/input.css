@@ -34,6 +34,11 @@ body {
     box-shadow: 0 1rem 3rem hsla(26, 100%, 55%, 0.363);
 }
 
+.slider-container {
+    height: 375px;
+    /* overflow: hidden; */
+}
+
 /* sidebar */
 .sidebar {
     visibility: hidden;
