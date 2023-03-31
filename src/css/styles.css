@@ -544,8 +544,16 @@ video {
   z-index: 10;
 }
 
+.z-20 {
+  z-index: 20;
+}
+
 .-mt-2 {
   margin-top: -0.5rem;
+}
+
+.mb-10 {
+  margin-bottom: 2.5rem;
 }
 
 .ml-auto {
@@ -558,10 +566,6 @@ video {
 
 .mr-px {
   margin-right: 1px;
-}
-
-.mb-10 {
-  margin-bottom: 2.5rem;
 }
 
 .flex {
@@ -652,16 +656,16 @@ video {
   margin-bottom: calc(0.75rem * var(--tw-space-y-reverse));
 }
 
-.space-y-5 > :not([hidden]) ~ :not([hidden]) {
-  --tw-space-y-reverse: 0;
-  margin-top: calc(1.25rem * calc(1 - var(--tw-space-y-reverse)));
-  margin-bottom: calc(1.25rem * var(--tw-space-y-reverse));
-}
-
 .space-y-4 > :not([hidden]) ~ :not([hidden]) {
   --tw-space-y-reverse: 0;
   margin-top: calc(1rem * calc(1 - var(--tw-space-y-reverse)));
   margin-bottom: calc(1rem * var(--tw-space-y-reverse));
+}
+
+.space-y-5 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(1.25rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(1.25rem * var(--tw-space-y-reverse));
 }
 
 .rounded-full {
@@ -710,6 +714,10 @@ video {
   --tw-bg-opacity: 0.75;
 }
 
+.bg-opacity-60 {
+  --tw-bg-opacity: 0.6;
+}
+
 .fill-clOrange {
   fill: hsl(26, 100%, 55%);
 }
@@ -736,6 +744,11 @@ video {
   padding-right: 1.5rem;
 }
 
+.py-3 {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+
 .py-4 {
   padding-top: 1rem;
   padding-bottom: 1rem;
@@ -744,15 +757,6 @@ video {
 .py-5 {
   padding-top: 1.25rem;
   padding-bottom: 1.25rem;
-}
-
-.py-3 {
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem;
-}
-
-.pt-3 {
-  padding-top: 0.75rem;
 }
 
 .text-3xl {
@@ -842,4 +846,24 @@ body {
 
 .addToCard-btn {
   box-shadow: 0 1rem 3rem hsla(26, 100%, 55%, 0.363);
+}
+
+/* sidebar */
+
+.sidebar {
+  visibility: hidden;
+  transition: all 200ms ease-in-out;
+}
+
+.show-sidebar {
+  visibility: visible;
+}
+
+.sidebar-content {
+  transform: translateX(-100%);
+  transition: all 300ms ease-in-out;
+}
+
+.show-sidebar-content {
+  transform: translateX(0%);
 }

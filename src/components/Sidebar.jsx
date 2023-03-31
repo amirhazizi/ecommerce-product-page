@@ -1,10 +1,18 @@
-import { CloseIcon } from "./Icons"
 import { useGlobalContext } from "../Context"
+import { CloseIcon } from "./Icons"
 const Sidebar = () => {
-  const { setShowSidebar } = useGlobalContext()
+  const { setShowSidebar, showSiderbar } = useGlobalContext()
   return (
-    <aside className='absolute left-0 top-0 bg-clBlack bg-opacity-75 w-full h-full'>
-      <div className='bg-clWhite h-full w-2/3 p-6 py-5 space-y-12'>
+    <aside
+      className={`sidebar absolute left-0 top-0 bg-clBlack bg-opacity-60 w-full h-full z-20 ${
+        showSiderbar && "show-sidebar"
+      }`}
+    >
+      <div
+        className={`sidebar-content bg-clWhite h-full w-2/3 p-6 py-5 space-y-12  ${
+          showSiderbar && "show-sidebar-content"
+        }`}
+      >
         <button onClick={() => setShowSidebar(false)}>
           <CloseIcon />
         </button>

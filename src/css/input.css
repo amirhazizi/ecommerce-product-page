@@ -33,3 +33,22 @@ body {
 .addToCard-btn {
     box-shadow: 0 1rem 3rem hsla(26, 100%, 55%, 0.363);
 }
+
+/* sidebar */
+.sidebar {
+    visibility: hidden;
+    transition: all 200ms ease-in-out;
+}
+
+.show-sidebar {
+    visibility: visible;
+}
+
+.sidebar-content {
+    transform: translateX(-100%);
+    transition: all 300ms ease-in-out;
+}
+
+.show-sidebar-content {
+    transform: translateX(0%);
+}
