@@ -78,6 +78,7 @@ const Hero = () => {
             <button
               onClick={() => {
                 updateOrder(order - 1)
+                updateCart("minus", product)
               }}
             >
               <MinusIcon />

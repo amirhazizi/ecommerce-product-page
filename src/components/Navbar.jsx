@@ -4,7 +4,7 @@ import userImage from "../assets/images/image-avatar.png"
 import { useGlobalContext } from "../Context"
 import { useState } from "react"
 const Navbar = () => {
-  const { setShowSidebar, productOrders } = useGlobalContext()
+  const { setShowSidebar, productOrders, updateCart } = useGlobalContext()
   const [showCardModal, setShowCardModal] = useState(false)
   return (
     <nav className='z-10 relative bg-clWhite'>
@@ -26,7 +26,7 @@ const Navbar = () => {
         <div className='card-modal absolute top-full left-1/2 -translate-x-1/2 translate-y-5 bg-white rounded-lg'>
           <h1 className='border-b text-sm font-bold p-5 '>Card</h1>
           {productOrders.length > 0 ? (
-            <div className='p-5'>
+            <div className='p-5 space-y-5'>
               {productOrders.map((productOrder) => {
                 const { thumbnail, title, offPrice, order, id } = productOrder
                 const totalPrice = offPrice * order
@@ -37,7 +37,7 @@ const Navbar = () => {
                       alt={title}
                       className='w-1/5 rounded-lg h-14'
                     />
-                    <div className='flex flex-col text-clDarkgrayishblue'>
+                    <div className='flex flex-col text-clDarkgrayishblue space-y-1'>
                       <p className=' text-sm'>{title}</p>
                       <p>
                         ${offPrice.toFixed(2)} x {order}{" "}
@@ -46,16 +46,18 @@ const Navbar = () => {
                         </span>
                       </p>
                     </div>
-
-                    <button>
+                    <button onTouchStart={() => updateCart("clear", {})}>
                       <DeleteIcon />
                     </button>
                   </div>
                 )
               })}
+              <button className='text-center text-clWhite bg-clOrange p-3 w-full rounded-lg'>
+                Checkout
+              </button>
             </div>
           ) : (
-            <div className='grid place-items-center h-52'>
+            <div className='grid place-items-center h-32'>
               <p className='font-bold text-center text-clDarkgrayishblue text-sm'>
                 Your cart is empty
               </p>

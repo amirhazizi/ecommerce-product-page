@@ -18,7 +18,13 @@ export const AppProvider = ({ children }) => {
         (product) => product.id === selectedProduct.id
       )
       if (prodoctOrdered) {
-        prodoctOrdered.order = prodoctOrdered.order + 1
+        const newProductOrders = productOrders.map((product) => {
+          if (product.id === selectedProduct.id) {
+            product.order = product.order + 1
+          }
+          return product
+        })
+        setProductOrders(newProductOrders)
       } else {
         const { id, title, offPrice, images } = selectedProduct
         const newProductOrders = [
@@ -33,7 +39,27 @@ export const AppProvider = ({ children }) => {
         ]
         setProductOrders(newProductOrders)
       }
-      console.log(productOrders)
+    } else if (type === "minus") {
+      const prodoctOrdered = productOrders.find(
+        (product) => product.id === selectedProduct.id
+      )
+      if (prodoctOrdered) {
+        let totalOrder = 0
+        const newProductOrders = productOrders.map((product) => {
+          if (product.id === selectedProduct.id) {
+            product.order = product.order - 1
+            if (product.order <= 0) {
+              product.order = 0
+              totalOrder = -1
+            }
+          }
+          return product
+        })
+        if (totalOrder === 0) setProductOrders(newProductOrders)
+        else setProductOrders([])
+      }
+    } else {
+      setProductOrders([])
     }
   }
   return (
