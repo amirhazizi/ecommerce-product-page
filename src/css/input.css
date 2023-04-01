@@ -25,6 +25,13 @@ body {
     scroll-behavior: smooth;
 }
 
+/* navbar */
+.card-modal {
+    width: 22rem;
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.324);
+
+}
+
 /* header */
 .slide-btn {
     padding: .8rem .95rem;
@@ -35,8 +42,8 @@ body {
 }
 
 .slider-container {
-    height: 375px;
-    /* overflow: hidden; */
+    height: 350px;
+    overflow: hidden;
 }
 
 /* sidebar */

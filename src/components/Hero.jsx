@@ -1,30 +1,44 @@
 import { NextIcon, PreviousIcon, MinusIcon, PlusIcon, CardIcon } from "./Icons"
+import { useState } from "react"
 import { useGlobalContext } from "../Context"
 const Hero = () => {
-  const {
-    product: { company, title, content, price, offPrice, OffPercent },
-    productImages,
-    sliderIndex,
-    setSliderIndex,
-    order,
-    setOrder,
-    addSliderIndex,
-    minusSliderIndex,
-  } = useGlobalContext()
+  const [order, setOrder] = useState(0)
+  const { product, productImages, updateCart } = useGlobalContext()
+  const { company, title, content, price, offPrice, OffPercent } = product
+  const [Images, setImages] = useState(productImages)
+  const [sliderIndex, setSliderIndex] = useState(0)
+  const addSliderIndex = () => {
+    const value = sliderIndex + 1
+    setSliderIndex(checkIndexChanger(value))
+  }
+  const minusSliderIndex = () => {
+    const value = sliderIndex - 1
+    setSliderIndex(checkIndexChanger(value))
+  }
+
+  const checkIndexChanger = (value) => {
+    if (value < 0) return productImages.length - 1
+    if (value >= productImages.length) return 0
+    return value
+  }
+  const updateOrder = (value) => {
+    if (value < 0) setOrder(0)
+    else setOrder(value)
+  }
   return (
     <header className='-mt-5 mb-10'>
       <div className='slider-container relative'>
-        {productImages.map((productimage, index) => {
-          let position = "translate-x-full"
+        {Images.map((productimage, index) => {
+          let position = "translate-x-full invisible"
           if (index === sliderIndex) position = ""
           if (
             index === sliderIndex - 1 ||
-            (sliderIndex === 0 && index === productImages.length - 1)
+            (sliderIndex === 0 && index === Images.length - 1)
           )
-            position = "-translate-x-full"
+            position = "-translate-x-full invisible"
           return (
             <img
-              className={`absolute top-0 left-0 transition-transform ${position}`}
+              className={`absolute top-0 left-0  transition-all ${position}`}
               key={index}
               src={productimage.jpg}
               alt={`${title}-image-${index + 1}`}
@@ -50,22 +64,31 @@ const Hero = () => {
         <p className='text-clDarkgrayishblue text-sm opacity-75'>{content}</p>
         <div className='flex items-center w-full py-3'>
           <div className='flex items-center gap-x-4'>
-            <h1 className='text-3xl'>${offPrice}.00</h1>
+            <h1 className='text-3xl'>${offPrice.toFixed(2)}</h1>
             <h2 className='text-clOrange bg-orange-100 px-2 rounded-md'>
               {OffPercent}%
             </h2>
           </div>
           <h3 className=' ml-auto line-through text-clDarkgrayishblue opacity-50'>
-            ${price}.00
+            ${price.toFixed(2)}
           </h3>
         </div>
         <div className='space-y-4'>
           <div className='flex justify-between bg-clLightgrayishblue p-5 py-4 rounded-md'>
-            <button className='fill-clOrange'>
+            <button
+              onClick={() => {
+                updateOrder(order - 1)
+              }}
+            >
               <MinusIcon />
             </button>
             <p>{order}</p>
-            <button>
+            <button
+              onClick={() => {
+                updateOrder(order + 1)
+                updateCart("plus", product)
+              }}
+            >
               <PlusIcon />
             </button>
           </div>
