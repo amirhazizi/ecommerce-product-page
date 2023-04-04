@@ -8,6 +8,7 @@ export const AppProvider = ({ children }) => {
   const [productOrders, setProductOrders] = useState([])
   const [order, setOrder] = useState(0)
   const [showCardModal, setShowCardModal] = useState(false)
+  const [bigHeaderIndex, setBigHeaderIndex] = useState(0)
 
   // console.log("reload context check")
 
@@ -77,6 +78,8 @@ export const AppProvider = ({ children }) => {
         setOrder,
         showCardModal,
         setShowCardModal,
+        bigHeaderIndex,
+        setBigHeaderIndex,
       }}
     >
       {children}

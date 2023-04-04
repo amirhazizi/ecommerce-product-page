@@ -9,6 +9,8 @@ const Hero = () => {
     order,
     setOrder,
     setShowCardModal,
+    bigHeaderIndex,
+    setBigHeaderIndex,
   } = useGlobalContext()
   const { company, title, content, price, offPrice, OffPercent } = product
   const [Images, setImages] = useState(productImages)
@@ -34,10 +36,10 @@ const Hero = () => {
   // console.log("reload header check")
   return (
     <header
-      className='-mt-5 mb-10'
+      className='-mt-5 mb-10 md:flex md:items-center md:max-w-2xl md:mx-auto md:gap-x-2 md:mt-10'
       onTouchStart={() => setShowCardModal(false)}
     >
-      <div className='slider-container relative'>
+      <div className='slider-container relative md:hidden'>
         {Images.map((productimage, index) => {
           let position = "translate-x-full invisible"
           if (index === sliderIndex) position = ""
@@ -68,7 +70,27 @@ const Hero = () => {
           <PreviousIcon />
         </button>
       </div>
-      <div className='p-5 space-y-3  font-bold'>
+      <div className='hidden md:block w-1/2 space-y-5'>
+        <img
+          className='rounded-xl'
+          src={productImages[bigHeaderIndex].jpg}
+          alt={title}
+        />
+        <div className='flex gap-x-5 w-fit mx-auto'>
+          {productImages.map(({ thumbnail }, index) => {
+            return (
+              <img
+                className='h-16 rounded-2xl'
+                key={index}
+                onClick={() => setBigHeaderIndex(index)}
+                src={thumbnail}
+                alt={title}
+              />
+            )
+          })}
+        </div>
+      </div>
+      <div className='p-5 space-y-3 font-bold md:w-1/2'>
         <p className='uppercase text-clOrange text-sm'>{company}</p>
         <h1 className='text-clVerydarkblue text-3xl'>{title}</h1>
         <p className='text-clDarkgrayishblue text-sm opacity-75'>{content}</p>
