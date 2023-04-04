@@ -2,8 +2,14 @@ import { NextIcon, PreviousIcon, MinusIcon, PlusIcon, CardIcon } from "./Icons"
 import { useState } from "react"
 import { useGlobalContext } from "../Context"
 const Hero = () => {
-  const [order, setOrder] = useState(0)
-  const { product, productImages, updateCart } = useGlobalContext()
+  const {
+    product,
+    productImages,
+    updateCart,
+    order,
+    setOrder,
+    setShowCardModal,
+  } = useGlobalContext()
   const { company, title, content, price, offPrice, OffPercent } = product
   const [Images, setImages] = useState(productImages)
   const [sliderIndex, setSliderIndex] = useState(0)
@@ -25,8 +31,12 @@ const Hero = () => {
     if (value < 0) setOrder(0)
     else setOrder(value)
   }
+  // console.log("reload header check")
   return (
-    <header className='-mt-5 mb-10'>
+    <header
+      className='-mt-5 mb-10'
+      onTouchStart={() => setShowCardModal(false)}
+    >
       <div className='slider-container relative'>
         {Images.map((productimage, index) => {
           let position = "translate-x-full invisible"

@@ -6,8 +6,10 @@ export const AppProvider = ({ children }) => {
   const [product, setProduct] = useState(products[0])
   const [productImages, setProductImages] = useState(product.images)
   const [productOrders, setProductOrders] = useState([])
+  const [order, setOrder] = useState(0)
+  const [showCardModal, setShowCardModal] = useState(false)
 
-  console.log("reload check")
+  // console.log("reload context check")
 
   useEffect(() => {
     setProductImages(product.images)
@@ -71,6 +73,10 @@ export const AppProvider = ({ children }) => {
         productImages,
         productOrders,
         updateCart,
+        order,
+        setOrder,
+        showCardModal,
+        setShowCardModal,
       }}
     >
       {children}

@@ -4,8 +4,16 @@ import userImage from "../assets/images/image-avatar.png"
 import { useGlobalContext } from "../Context"
 import { useState } from "react"
 const Navbar = () => {
-  const { setShowSidebar, productOrders, updateCart } = useGlobalContext()
-  const [showCardModal, setShowCardModal] = useState(false)
+  const {
+    setShowSidebar,
+    productOrders,
+    updateCart,
+    order,
+    showCardModal,
+    setShowCardModal,
+  } = useGlobalContext()
+  // console.log("reload navbar check")
+
   return (
     <nav className='z-10 relative bg-clWhite'>
       <div className='p-4 px-6 flex justify-between items-center'>
@@ -16,7 +24,15 @@ const Navbar = () => {
           <img src={logo} alt='logo' />
         </div>
         <div className='flex items-center space-x-6'>
-          <button onTouchStart={() => setShowCardModal(!showCardModal)}>
+          <button
+            className='relative'
+            onTouchStart={() => setShowCardModal(!showCardModal)}
+          >
+            {productOrders.length > 0 && (
+              <p className='absolute bg-clOrange text-clPaleorange right-0 top-0 -translate-y-2 translate-x-2 text-xs px-2 rounded-xl'>
+                {order}
+              </p>
+            )}
             <CardIcon />
           </button>
           <img className='h-7' src={userImage} alt='user-avatar' />
