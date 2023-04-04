@@ -9,12 +9,11 @@ const Hero = () => {
     order,
     setOrder,
     setShowCardModal,
-    bigHeaderIndex,
-    setBigHeaderIndex,
   } = useGlobalContext()
   const { company, title, content, price, offPrice, OffPercent } = product
   const [Images, setImages] = useState(productImages)
   const [sliderIndex, setSliderIndex] = useState(0)
+  const [bigHeaderIndex, setBigHeaderIndex] = useState(0)
   const addSliderIndex = () => {
     const value = sliderIndex + 1
     setSliderIndex(checkIndexChanger(value))
@@ -79,13 +78,20 @@ const Hero = () => {
         <div className='flex gap-x-5 w-fit mx-auto'>
           {productImages.map(({ thumbnail }, index) => {
             return (
-              <img
-                className='h-16 rounded-2xl'
-                key={index}
-                onClick={() => setBigHeaderIndex(index)}
-                src={thumbnail}
-                alt={title}
-              />
+              <div
+                className={`h-16 rounded-2xl cursor-pointer   ${
+                  bigHeaderIndex === index &&
+                  "border-2 relative after:bg-clWhite after:w-full after:h-full after:absolute after:z-10 after:top-0 after:left-0 after:rounded-xl after:opacity-50  border-clOrange"
+                }`}
+              >
+                <img
+                  className='rounded-xl h-full w-full'
+                  key={index}
+                  onClick={() => setBigHeaderIndex(index)}
+                  src={thumbnail}
+                  alt={title}
+                />
+              </div>
             )
           })}
         </div>
