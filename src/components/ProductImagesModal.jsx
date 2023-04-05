@@ -56,13 +56,37 @@ const ProductImagesModal = () => {
             onClick={() => addSliderIndex()}
             className='modal-btn absolute top-1/2 right-0 translate-x-4 bg-white rounded-full'
           >
-            <NextIcon />
+            <svg
+              className='scale-90 mr-px stroke-black transition-colors hover:stroke-clOrange'
+              width='13'
+              height='18'
+              xmlns='http://www.w3.org/2000/svg'
+            >
+              <path
+                d='m2 1 8 8-8 8'
+                strokeWidth='3'
+                fill='none'
+                fillRule='evenodd'
+              />
+            </svg>
           </button>
           <button
             onClick={() => minusSliderIndex()}
             className='modal-btn absolute top-1/2 left-0 -translate-x-4 bg-white rounded-full'
           >
-            <PreviousIcon />
+            <svg
+              className='scale-90 mr-px stroke-black transition-colors hover:stroke-clOrange'
+              width='12'
+              height='18'
+              xmlns='http://www.w3.org/2000/svg'
+            >
+              <path
+                d='M11 1 3 9l8 8'
+                strokeWidth='3'
+                fill='none'
+                fillRule='evenodd'
+              />
+            </svg>
           </button>
           <button
             onClick={() => setShowModalImages(false)}
@@ -87,12 +111,12 @@ const ProductImagesModal = () => {
             return (
               <div
                 key={index}
-                className={`thumbnail ${
+                className={`thumbnail hover:opacity-80  ${
                   bigHeaderIndex === index && "thumbnail-seleckted"
                 }`}
               >
                 <img
-                  className='rounded-xl h-full w-full'
+                  className='rounded-xl h-full w-full relative'
                   onClick={() => {
                     setBigHeaderIndex(index)
                     setSliderIndex(index)

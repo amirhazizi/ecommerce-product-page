@@ -28,27 +28,42 @@ const Navbar = () => {
           <img className='md:ml-10' src={logo} alt='logo' />
           <ul className='hidden md:flex space-x-6 font-bold text-sm text-clDarkgrayishblue opacity-70'>
             <li>
-              <a className='cursor-pointer' href=''>
+              <a
+                className='navbar-link relative hover:after:bg-clOrange  '
+                href='#'
+              >
                 Collections
               </a>
             </li>
             <li>
-              <a className='cursor-pointer' href=''>
+              <a
+                className='navbar-link relative hover:after:bg-clOrange  '
+                href='#'
+              >
                 Men
               </a>
             </li>
             <li>
-              <a className='cursor-pointer' href=''>
+              <a
+                className='navbar-link relative hover:after:bg-clOrange  '
+                href='#'
+              >
                 Women
               </a>
             </li>
             <li>
-              <a className='cursor-pointer' href=''>
+              <a
+                className='navbar-link relative hover:after:bg-clOrange  '
+                href='#'
+              >
                 About
               </a>
             </li>
             <li>
-              <a className='cursor-pointer' href=''>
+              <a
+                className='navbar-link relative hover:after:bg-clOrange  '
+                href='#'
+              >
                 Contact
               </a>
             </li>
@@ -67,7 +82,13 @@ const Navbar = () => {
             )}
             <CardIcon />
           </button>
-          <img className='h-7 md:h-9' src={userImage} alt='user-avatar' />
+          <button>
+            <img
+              className='h-7 md:h-10 border-2 border-clWhite hover:border-clOrange transition-all rounded-full'
+              src={userImage}
+              alt='user-avatar'
+            />
+          </button>
         </div>
         {showCardModal && (
           <div className=' card-modal absolute top-full right-1/2  translate-y-4 translate-x-1/2 bg-white rounded-lg md:right-0 md:translate-x-0 md:-translate-y-2 z-20'>

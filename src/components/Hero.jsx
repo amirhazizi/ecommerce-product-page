@@ -76,8 +76,10 @@ const Hero = () => {
         </div>
         <div className='hidden md:block w-1/2 space-y-5'>
           <img
-            onClick={() => setShowModalImages(true)}
-            className='rounded-xl'
+            onClick={() => {
+              setShowModalImages(true)
+            }}
+            className='rounded-xl cursor-pointer'
             src={productImages[bigHeaderIndex].jpg}
             alt={title}
           />
@@ -86,13 +88,16 @@ const Hero = () => {
               return (
                 <div
                   key={index}
-                  className={`thumbnail ${
+                  className={`thumbnail hover:opacity-80 ${
                     bigHeaderIndex === index && "thumbnail-seleckted"
                   }`}
                 >
                   <img
                     className='rounded-xl h-full w-full'
-                    onClick={() => setBigHeaderIndex(index)}
+                    onClick={() => {
+                      setBigHeaderIndex(index)
+                      console.log(index)
+                    }}
                     src={thumbnail}
                     alt={title}
                   />
@@ -123,8 +128,9 @@ const Hero = () => {
             </h3>
           </div>
           <div className='space-y-4 md:flex md:items-center md:space-y-0 md:gap-x-4'>
-            <div className='flex justify-between bg-clLightgrayishblue p-5 py-4 rounded-md md:w-1/2 lg:w-2/5'>
+            <div className='flex justify-between bg-clLightgrayishblue p-5 py-4 rounded-md md:w-1/2 lg:w-2/5 '>
               <button
+                className='transition-opacity hover:opacity-70'
                 onTouchStart={() => {
                   addToCartChecker(order - 1)
                 }}
@@ -136,6 +142,7 @@ const Hero = () => {
               </button>
               <p>{order}</p>
               <button
+                className='transition-opacity hover:opacity-70'
                 onTouchStart={() => {
                   addToCartChecker(order + 1)
                 }}
@@ -153,7 +160,7 @@ const Hero = () => {
               onClick={() => {
                 updateCart(order, product)
               }}
-              className='addToCard-btn w-full bg-clOrange text-clWhite flex items-center gap-x-3 justify-center p-4 rounded-lg text-sm md:text-xs md:gap-x-1  md:w-1/2 lg:w-3/5'
+              className='addToCard-btn w-full bg-clOrange text-clWhite flex items-center gap-x-3 justify-center p-4 rounded-lg text-sm md:text-xs md:gap-x-1  md:w-1/2 lg:w-3/5 hover:bg-opacity-75 transition-all'
             >
               <svg
                 className='scale-75'
