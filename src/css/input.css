@@ -118,3 +118,21 @@ body {
         font-size: .6rem;
     }
 }
+
+@media (min-width:1024px) {
+    .card-modal {
+        width: 22rem;
+    }
+
+    .product-content {
+        font-size: .9rem;
+    }
+
+    .product-title {
+        font-size: 2.5rem;
+    }
+
+    .thumbnail {
+        height: 5.7rem;
+    }
+}

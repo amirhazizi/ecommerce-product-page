@@ -16,13 +16,17 @@ const Navbar = () => {
 
   return (
     <nav className='z-20 bg-clWhite'>
-      <div className='p-4 px-6 flex justify-between items-center  md:border-b-2 md:max-w-2xl md:mx-auto md:px-0 md:py-7 md:pb-10 relative'>
-        <div className='flex items-center space-x-4 md:space-x-0 md:gap-x-10'>
-          <button className='md:hidden' onClick={() => setShowSidebar(true)}>
+      <div className='relative p-4 px-6 flex justify-between items-center  md:border-b-2 md:max-w-2xl md:mx-auto md:px-0 md:py-7 md:pb-10 lg:max-w-5xl'>
+        <div className='flex items-center space-x-4 md:space-x-0 md:gap-x-12'>
+          <button
+            className='md:hidden'
+            onTouchStart={() => setShowSidebar(true)}
+            onClick={() => setShowSidebar(true)}
+          >
             <MenuIcon />
           </button>
           <img className='md:ml-10' src={logo} alt='logo' />
-          <ul className='hidden md:flex space-x-4 font-bold text-sm text-clDarkgrayishblue'>
+          <ul className='hidden md:flex space-x-6 font-bold text-sm text-clDarkgrayishblue opacity-70'>
             <li>
               <a className='cursor-pointer' href=''>
                 Collections
@@ -54,6 +58,7 @@ const Navbar = () => {
           <button
             className='relative'
             onTouchStart={() => setShowCardModal(!showCardModal)}
+            onClick={() => setShowCardModal(!showCardModal)}
           >
             {productOrders.length > 0 && (
               <p className='absolute bg-clOrange text-clPaleorange right-0 top-0 -translate-y-2 translate-x-2 text-xs px-2 rounded-xl'>
@@ -88,7 +93,10 @@ const Navbar = () => {
                           </span>
                         </p>
                       </div>
-                      <button onTouchStart={() => updateCart(0, productOrder)}>
+                      <button
+                        onTouchStart={() => updateCart(0, productOrder)}
+                        onClick={() => updateCart(0, productOrder)}
+                      >
                         <DeleteIcon />
                       </button>
                     </div>
