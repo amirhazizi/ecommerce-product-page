@@ -54,7 +54,7 @@ const Navbar = () => {
             </li>
           </ul>
         </div>
-        <div className='flex items-center space-x-6'>
+        <div className='flex items-center space-x-6 md:space-x-8'>
           <button
             className='relative'
             onTouchStart={() => setShowCardModal(!showCardModal)}
@@ -67,7 +67,7 @@ const Navbar = () => {
             )}
             <CardIcon />
           </button>
-          <img className='h-7' src={userImage} alt='user-avatar' />
+          <img className='h-7 md:h-9' src={userImage} alt='user-avatar' />
         </div>
         {showCardModal && (
           <div className=' card-modal absolute top-full right-1/2  translate-y-4 translate-x-1/2 bg-white rounded-lg md:right-0 md:translate-x-0 md:-translate-y-2 z-20'>

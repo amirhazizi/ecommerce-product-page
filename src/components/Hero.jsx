@@ -6,7 +6,7 @@ const Hero = () => {
     product,
     productImages,
     updateCart,
-
+    setShowModalImages,
     setShowCardModal,
   } = useGlobalContext()
   const [order, setOrder] = useState(0)
@@ -76,6 +76,7 @@ const Hero = () => {
         </div>
         <div className='hidden md:block w-1/2 space-y-5'>
           <img
+            onClick={() => setShowModalImages(true)}
             className='rounded-xl'
             src={productImages[bigHeaderIndex].jpg}
             alt={title}
