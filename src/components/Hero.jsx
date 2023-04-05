@@ -1,4 +1,4 @@
-import { NextIcon, PreviousIcon, MinusIcon, PlusIcon, CardIcon } from "./Icons"
+import { NextIcon, PreviousIcon, MinusIcon, PlusIcon } from "./Icons"
 import { useState } from "react"
 import { useGlobalContext } from "../Context"
 const Hero = () => {
@@ -6,10 +6,10 @@ const Hero = () => {
     product,
     productImages,
     updateCart,
-    order,
-    setOrder,
+
     setShowCardModal,
   } = useGlobalContext()
+  const [order, setOrder] = useState(0)
   const { company, title, content, price, offPrice, OffPercent } = product
   const [Images, setImages] = useState(productImages)
   const [sliderIndex, setSliderIndex] = useState(0)
@@ -21,6 +21,10 @@ const Hero = () => {
   const minusSliderIndex = () => {
     const value = sliderIndex - 1
     setSliderIndex(checkIndexChanger(value))
+  }
+  const addToCartChecker = (value) => {
+    if (value <= 0) return setOrder(0)
+    return setOrder(value)
   }
 
   const checkIndexChanger = (value) => {
@@ -35,7 +39,7 @@ const Hero = () => {
   // console.log("reload header check")
   return (
     <header
-      className='-mt-5 mb-10 md:flex md:items-center md:max-w-2xl md:mx-auto md:gap-x-2 md:mt-10'
+      className=' mb-10 md:flex md:items-start md:max-w-2xl md:mx-auto md:gap-x-4 md:pt-16'
       onTouchStart={() => setShowCardModal(false)}
     >
       <div className='slider-container relative md:hidden'>
@@ -75,18 +79,17 @@ const Hero = () => {
           src={productImages[bigHeaderIndex].jpg}
           alt={title}
         />
-        <div className='flex gap-x-5 w-fit mx-auto'>
+        <div className='flex justify-between w-full mx-auto'>
           {productImages.map(({ thumbnail }, index) => {
             return (
               <div
-                className={`h-16 rounded-2xl cursor-pointer   ${
-                  bigHeaderIndex === index &&
-                  "border-2 relative after:bg-clWhite after:w-full after:h-full after:absolute after:z-10 after:top-0 after:left-0 after:rounded-xl after:opacity-50  border-clOrange"
+                key={index}
+                className={`thumbnail ${
+                  bigHeaderIndex === index && "thumbnail-seleckted"
                 }`}
               >
                 <img
                   className='rounded-xl h-full w-full'
-                  key={index}
                   onClick={() => setBigHeaderIndex(index)}
                   src={thumbnail}
                   alt={title}
@@ -96,27 +99,28 @@ const Hero = () => {
           })}
         </div>
       </div>
-      <div className='p-5 space-y-3 font-bold md:w-1/2'>
-        <p className='uppercase text-clOrange text-sm'>{company}</p>
-        <h1 className='text-clVerydarkblue text-3xl'>{title}</h1>
-        <p className='text-clDarkgrayishblue text-sm opacity-75'>{content}</p>
-        <div className='flex items-center w-full py-3'>
+      <div className='p-5 space-y-3 font-bold md:w-1/2 md:self-center'>
+        <p className='uppercase text-clOrange text-sm md:text-xs'>{company}</p>
+        <h1 className='product-title text-clVerydarkblue'>{title}</h1>
+        <p className='product-content text-clDarkgrayishblue opacity-75 md:leading-4'>
+          {content}
+        </p>
+        <div className='flex items-center w-full py-3 md:flex-col md:items-start md:gap-y-1'>
           <div className='flex items-center gap-x-4'>
-            <h1 className='text-3xl'>${offPrice.toFixed(2)}</h1>
-            <h2 className='text-clOrange bg-orange-100 px-2 rounded-md'>
+            <h1 className='text-3xl md:text-2xl'>${offPrice.toFixed(2)}</h1>
+            <h2 className='text-clOrange bg-orange-100 px-2 rounded-md md:text-sm'>
               {OffPercent}%
             </h2>
           </div>
-          <h3 className=' ml-auto line-through text-clDarkgrayishblue opacity-50'>
+          <h3 className=' ml-auto line-through text-clDarkgrayishblue opacity-50 md:ml-0 md:text-sm'>
             ${price.toFixed(2)}
           </h3>
         </div>
-        <div className='space-y-4'>
-          <div className='flex justify-between bg-clLightgrayishblue p-5 py-4 rounded-md'>
+        <div className='space-y-4 md:flex md:items-center md:space-y-0 md:gap-x-4'>
+          <div className='flex justify-between bg-clLightgrayishblue p-5 py-4 rounded-md md:w-1/2'>
             <button
               onClick={() => {
-                updateOrder(order - 1)
-                updateCart("minus", product)
+                addToCartChecker(order - 1)
               }}
             >
               <MinusIcon />
@@ -124,14 +128,18 @@ const Hero = () => {
             <p>{order}</p>
             <button
               onClick={() => {
-                updateOrder(order + 1)
-                updateCart("plus", product)
+                addToCartChecker(order + 1)
               }}
             >
               <PlusIcon />
             </button>
           </div>
-          <button className='addToCard-btn w-full bg-clOrange text-clWhite flex gap-x-3 justify-center p-4 rounded-lg text-sm'>
+          <button
+            onClick={() => {
+              updateCart(order, product)
+            }}
+            className='addToCard-btn w-full bg-clOrange text-clWhite flex items-center gap-x-3 justify-center p-4 rounded-lg text-sm md:text-xs md:gap-x-1  md:w-1/2'
+          >
             <svg
               className='scale-75'
               width='22'
